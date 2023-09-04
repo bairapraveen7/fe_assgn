@@ -4,10 +4,137 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/15c1ebfa22.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="app.css" />
     <title>culture.easy.xyz</title>
 </head>
+
 <body>
-    
+
+    <header>
+
+        <nav>
+            <div class="header_navbar">
+                <img class="culture_logo" src="images/culture.svg" alt="culture.easy logo"/>
+                <i class="fa-solid fa-bars fa-xl"></i>
+            </div>
+        </nav>
+ 
+    </header>
+
+    <main>
+
+        <section class="section_1">
+
+            <h1>Drive your teams into High Performance Mode with OKRs</h1>
+            <img src="images/elon_okrs_2x.png" alt="elon mars setting image"/>
+            <button class="talk">Talk to us</button>
+             
+        
+        </section>
+
+        <section class="section_2">
+
+            <div class="carousel">
+                <div class="item one">
+                    <h2>"Communicating and managing OKRs on culture.easy is helping
+                        slay align on high priority goals"</h2>
+                    <div class="author">
+                        <img src="images/Slay_person.jpeg" />
+                        <div class="author_data">
+                            <p>Richa Singh</p>
+                            <p>Senior HR manager, SLAY Coffee, India</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item two">
+                    <h2>"culture.easy's simple-designed OKR feature was key to
+                        the mind-shift towards high performance execution"
+                    </h2>
+                    <div class="author">
+                        <img src="images/Automate_person.jpeg" />
+                        <div class="author_data">
+                            <p>Ashok G</p>
+                            <p>Founder & CEO, Automate.io, USA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item three">
+                    <h2>"My first 5 minutes every day goes into understanding 
+                        how my team is executing to the planned goals. I am happy 
+                        that I'm looking at culture.easy and not a google sheet "</h2>
+                    <div class="author">
+                        <img src="images/vamshi_A.png" />
+                        <div class="author_data">
+                            <p>Vamshi A</p>
+                            <p>Founder, predora</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav_circle">
+                <div class="nav_circle_item first"></div>
+                <div class="nav_circle_item second"></div>
+                <div class="nav_circle_item third"></div>
+            </div>
+
+            <div class="ending_line">
+            </div>
+             
+        </section>
+
+    </main>
+
+    <script>
+
+        let slideIndex = -1,flag = 0;
+        const slides = document.querySelectorAll(".item")
+        const nav_circles = document.querySelectorAll(".nav_circle_item");
+        const totalSlides = slides.length;
+        
+        function showNextSlide(){
+
+            if(flag === 0)
+            {
+                slides.forEach((slide) => {
+                    slide.style.display = "flex";
+                });
+                flag = 1;
+            }
+            slideIndex++;
+            if(slideIndex == totalSlides){
+                slideIndex = 0;
+            }
+            updateSlidePosition();
+        }
+        
+        function updateSlidePosition(){ 
+            const offsetX = -slideIndex * 100;
+            slides.forEach((slide,index) => {
+                slide.style.transform = `translateX(${offsetX + index * 100}%)`;
+                if(index === slideIndex)
+                {
+                    nav_circles[index].style.backgroundColor = 'blue';
+                }
+                else{
+                    nav_circles[index].style.backgroundColor = '#cccccc';
+                }
+            });
+        }
+        
+        setInterval(showNextSlide,3000);
+        
+        </script>
+
 </body>
+
 </html>
