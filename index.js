@@ -8,6 +8,25 @@ const s4_nextButton = document.querySelector(".section_4_two a:last-of-type");
 
 const slideWidth = s4_slides[0].getBoundingClientRect().width;
 
+const updateImage = () => {
+
+    const header_navbar_img = document.querySelector(".section_1 img");
+    const section_3_img = document.querySelector(".section_3 img");
+
+    if(window.innerWidth>750)
+    {
+        section_3_img.srcset='images/homepage_steps.png';
+        header_navbar_img.src='images/Mars_okrs_b_2x.png';
+    }
+
+    if(window.innerWidth<=750)
+    {
+       section_3_img.srcset='images/steps_m_2x.png';
+       header_navbar_img.src='images/elon_okrs_2x.png';
+    }
+    
+}
+
 // const cloneFirst = s4_slides[0].cloneNode(true);
 // const cloneLast = s4_slides[s4_slides.length-1].cloneNode(true);
 
@@ -49,4 +68,10 @@ s4_nextButton.addEventListener("click", e => {
     nextSlide.classList.add("current-slide");
 
 });
+
+// window resize event listener
+
+
+updateImage();
+window.addEventListener('resize',updateImage);
 

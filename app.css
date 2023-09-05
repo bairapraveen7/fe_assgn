@@ -248,6 +248,11 @@ footer{
 .section_3{
     margin-top:4em;
 }
+
+.section_3 img{
+ margin-top:4em;
+}
+
 .section_3 .item_3{
     display:flex;
     width:80%;
@@ -390,6 +395,11 @@ footer{
     color: #5330c9;
 }
 
+.section_4_two_alter{
+    display:flex;
+    justify-content: space-between;
+}
+
 .section_5{
     text-align: center;
 }
@@ -426,6 +436,15 @@ footer{
 
 }
 
+.sec5_to_flex{
+    margin:4em 2em;
+}
+
+.section5_content{
+    display:flex;
+    justify-content: space-between;
+}
+
 .section_6,.section_7{
     text-align: center;
 }
@@ -441,6 +460,7 @@ footer{
 
 .section_6 .awards{
     display:flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -455,6 +475,22 @@ footer{
 .section_7 .awards_img{
     width:6em;
     height:6em;
+}
+
+@media screen and (max-width:751px){
+
+    .section_4_two{
+        display:flex;
+    }
+
+    .section_4_two_alter{
+        display:none;
+    }
+
+    .section5_content{
+        display:none;
+    }
+    
 }
 
 @media screen and (min-width:750px) {
@@ -491,6 +527,44 @@ footer{
         justify-content: space-between;
         align-items: center;
         margin-right:1em;
+    }
+
+     
+
+    .section_3 .section_3_item{
+        display:none;
+    }
+
+    .section_4_two{
+        display:none;
+    }
+    .section_4_two_alter{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        margin:4em;
+    }
+
+    .section_4_two_alter .s42_alter_contents{
+        font-family: 'Red Hat Display';
+        font-weight: 500;
+    }
+
+    .section_4_two_alter .s42_alter_contents p{
+        margin:0.5em;
+    }
+
+    .section_4_two_alter .s42_alter_images{
+        width:70%;
+    }
+
+    .sec5_to_flex{
+        display:flex;
+        align-items: center;
+    }
+
+    .section5_content{
+        display: flex;
     }
     
 }
@@ -541,6 +615,8 @@ footer{
     .section_2 .carousel,.section_2 .nav_circle{
         width:50%;
     }
+
+    
 
     
     
