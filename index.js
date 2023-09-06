@@ -2,6 +2,8 @@ const s4_track = document.querySelector(".s42_slides");
 
 var s4_slides = Array.from(s4_track.children);
 
+var index = 0
+
 const s4_prevButton = document.querySelector(".section_4_two a:first-of-type");
 
 const s4_nextButton = document.querySelector(".section_4_two a:last-of-type");
@@ -43,6 +45,15 @@ const setSlidePosition = (slide,index) => {
 
 s4_slides.forEach(setSlidePosition);
 
+const keepslides_right = () => {
+    console.log("hi");
+    if(window.innerWidth<750)
+    {
+        s4_slides.forEach(setSlidePosition);
+    }
+
+}
+
 // when I click left, move sldies to the left
 s4_prevButton.addEventListener("click", e => {
     const currentSlide = s4_track.querySelector(".current-slide");
@@ -74,4 +85,5 @@ s4_nextButton.addEventListener("click", e => {
 
 updateImage();
 window.addEventListener('resize',updateImage);
+window.addEventListener('resize',keepslides_right);
 

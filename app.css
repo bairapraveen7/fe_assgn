@@ -8,7 +8,14 @@
     height:10em;
 }
 
+.center{
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 footer{
+    width:100vw;
     position: relative;
     background: linear-gradient(to bottom left,#221a3b 0%,#221a3b 75%,#3d2f6a 100%);
 }
@@ -397,8 +404,34 @@ footer{
 
 .section_4_two_alter{
     display:flex;
-    justify-content: space-between;
+    height: 70%;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
 }
+
+.section_4_two_alter .s42_slides .alter{
+    display:none;
+}
+
+.section_4_two_alter .s42_slides{
+    width:60%;
+    height:50%;
+}
+
+.section_4_two_alter .s42_slides .current-slide-alter img{
+    width:80%;
+    object-fit: contain;
+    position: relative;
+    left:10%;
+    object-position: top;
+    height:100%;
+}
+
+
 
 .section_5{
     text-align: center;
@@ -411,7 +444,7 @@ footer{
 .section_5 h1{
     font-family: 'Red Hat Display';
     font-size:2em;
-    margin:1em;
+    margin:0.5em;
 }
 
 .section_5 h4,.section_5 p,.section_5 button{
@@ -473,8 +506,8 @@ footer{
 }
 
 .section_7 .awards_img{
-    width:6em;
-    height:6em;
+
+    object-fit: contain;
 }
 
 @media screen and (max-width:751px){
@@ -490,10 +523,20 @@ footer{
     .section5_content{
         display:none;
     }
+
+    .awards_7 .extra{
+        display:none;
+    }
+
+    .s4_coloring{
+        background-color: none;
+    }
+
+   
     
 }
 
-@media screen and (min-width:750px) {
+@media screen and (min-width:720px) {
 
     .header_navbar .fa-solid{
         float:right;
@@ -535,18 +578,30 @@ footer{
         display:none;
     }
 
+    .s4_coloring{
+        background-color: #f0efef;
+    }
+
     .section_4_two{
         display:none;
     }
     .section_4_two_alter{
         display:flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        margin:4em;
+    }
+
+    .s4_coloring{
+        height:24em;
+    }
+
+    .s42_one{
+        width:50%;
     }
 
     .section_4_two_alter .s42_alter_contents{
         font-family: 'Red Hat Display';
+        background-color: white;
         font-weight: 500;
     }
 
@@ -554,8 +609,17 @@ footer{
         margin:0.5em;
     }
 
-    .section_4_two_alter .s42_alter_images{
-        width:70%;
+    .section_4_two_alter .s42_slides p{
+        text-align: center;
+    }
+
+    .section_4_two_alter .s42_slides .current-slide-alter{
+        display:block;
+        width: 40%;
+        margin-left:3em;
+        overflow: hidden;
+        height: 300px;
+        background-color: white;
     }
 
     .sec5_to_flex{
@@ -566,6 +630,12 @@ footer{
     .section5_content{
         display: flex;
     }
+
+    .awards_7 .extra{
+        display:block;
+    }
+
+    
     
 }
 
