@@ -135,8 +135,8 @@
                 </div>
                 <div class="section_4_two">
                     <a><i class="fa-solid fa-chevron-left"></i></a>
-                    <div class="s42_slides shifting">
-                        <div class="s42_one current-slide">
+                    <div class="s42_slides">
+                        <div class="s42_one">
                             <button class="s42_one_surveys">Surveys</button>
                             <p>Listen to the frontline voices that are executing your business strategy</p>
                             <p>LEARN MORE <i class="fa-solid fa-chevron-right"></i></p>
@@ -263,11 +263,23 @@
         <section class="section_7">
             <p>OUR CUSTOMERS</p>
             <div class="awards_7">
-                <img class="awards_img" src="images/automate_logo_b.png" />
-                <img class="awards_img" src="images/slay_coffee-_216.png" />
-                <img class="awards_img" src="images/ayu_health_b.png" />
-                <img class="awards_img extra" src="images/turbohire_logo_b.png" />
-                 
+                <div class="slide awards_7_one shifting">
+                    <img class="awards_img" src="images/automate_logo_b.png" />
+                    <img class="awards_img" src="images/slay_coffee-_216.png" />
+                    <img class="awards_img" src="images/ayu_health_b.png" />
+                    <img class="awards_img extra" src="images/turbohire_logo_b.png" />
+                    <img class="awards_img extra" src="images/predera_logo-b.png" />
+
+                </div>
+                <div class="slide awards_7_two shifting">
+                    <img class="awards_img extra" src="images/red_hat_logo_1.png" />
+                    <img class="awards_img extra" src="images/disney_logo_b.png" />
+                    <img class="awards_img extra" src="images/tesco_logo_b.png" />
+                    <img class="awards_img extra" src="images/rocketium_logo_b.png" />
+                    <img class="awards_img extra" src="images/angel_logo_b.png" />
+                    
+
+                </div>
 
             </div>
         </section>
@@ -332,7 +344,6 @@
         slides = Array.from(top_track.children);
         
         totalSlides = slides.length;
-        console.log(totalSlides);
         
         function showNextSlide(){
 
@@ -362,7 +373,6 @@
              
             });
             slideIndex++;
-            console.log(slideIndex);
             if(slideIndex === totalSlides+1)
             {
                    slides.forEach((slide,index) => {

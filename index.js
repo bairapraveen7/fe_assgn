@@ -2,7 +2,7 @@ const s4_track = document.querySelector(".s42_slides");
 
 var s4_slides = Array.from(s4_track.children);
 
-var index = 0;
+let slideIndex_2 = 0;
 
 const cloneFirst = s4_slides[0].cloneNode(true);
 const cloneLast = s4_slides[s4_slides.length-1].cloneNode(true);
@@ -44,53 +44,56 @@ const updateImage = () => {
 
 //arrange the slides next to one another
 
-const setSlidePosition = (slide,index) => {
-    slide.style.left = index*slideWidth + 'px';
-}
-
-s4_slides.forEach(setSlidePosition);
-
-const keepslides_right = () => {
-
-    if(window.innerWidth<750)
-    {
-        s4_slides.forEach(setSlidePosition);
-    }
-
-}
-
 const moveSlideLeft = () => {
    
-    var positionSelf = s4_track.offsetLeft;
-    
-    //move to previousSlide
-    s4_track.style.left = positionSelf+slideWidth + 'px';
+    slideIndex_2--;
+
+    if(slideIndex_2 == -1)
+    {
+        let offset_dup = -700;
+
+        s4_slides.forEach((slide,index) => {
+            slide.classList.remove("shifting");
+            slide.style.transform = `translate(${offset_dup + index*100}%)`;
+        })
+        slideIndex_2 = 4;
+    }
+
+    const offset = -(slideIndex_2*100);
+     
+    s4_slides.forEach((slide,index) => {
+        slide.classList.add("shifting");
+    slide.style.transform = `translateX(${offset + index*100}%)`;
+    });
     
 }
 
 const moveSlideRight = () => {
 
-    console.log("hi ");
-    var positionSelf = s4_track.offsetLeft;
-     console.log(positionSelf-slideWidth);
-     //move to nextSlide
-    s4_track.style.left = positionSelf-slideWidth + 'px';
+    let offset_dup = -100;
+
+    slideIndex_2++;
+
+    if(slideIndex_2 === slidesLength)
+    {
+        s4_slides.forEach((slide,index) => {
+            slide.classList.remove("shifting");
+            slide.style.transform = `translate(${offset_dup + index*100}%)`;
+        })
+        slideIndex_2 = 2;
+    }
+
+    const offset = -(slideIndex_2*100);
+
+    s4_slides.forEach((slide,index) => {
+        slide.classList.add("shifting");
+    slide.style.transform = `translateX(${offset + index*100}%)`;
+    });
+    
+    
+
+    
      
-}
-
-const checkIndex = () => {
-    // s4_track.classList.remove("shifting");
-    if(index === -1)
-    {
-        s4_track.style.left = -(slidesLength * slideWidth) + "px";
-        index = slidesLength - 1;
-    }
-
-    if(index === slidesLength)
-    {
-        s4_track.style.left = -(1 * slideWidth) + "px";
-        index = 0;
-    }
 }
 
 // when I click left, move sldies to the left
@@ -101,6 +104,10 @@ s4_prevButton.addEventListener('click',moveSlideLeft);
 
 s4_nextButton.addEventListener('click', moveSlideRight);
 
+// By default we need the second slide to appear , so
+
+moveSlideRight();
+
 
 
 updateImage();
@@ -108,9 +115,43 @@ updateImage();
 // window resize event listener
 
 window.addEventListener('resize',updateImage);
-window.addEventListener('resize',keepslides_right);
 
-// when the transition ends, the event listener
+// the awards section javascript
 
-window.addEventListener('transitionend',checkIndex);
+let slideIndex_3 = 0;
 
+const top_track_3 = document.querySelector(".section_7 .awards_7");
+
+let slides_3 = document.querySelectorAll(".awards_7 .slide");
+
+let totalSlides_3 = slides_3.length;
+
+let cloneFirsta_3 = slides_3[0].cloneNode(true);
+
+top_track_3.appendChild(cloneFirsta_3);
+
+slides_3 = Array.from(top_track_3.children);
+
+totalSlides_3 = slides_3.length;
+
+function updateSlide3Position(){
+     const offsetX_3 = -slideIndex_3*100;
+     slides_3.forEach((slide,index) => {
+           slide.classList.add("shifting");
+           slide.style.transform = `translateX(${offsetX_3 + index*100}%)`;
+     })
+     slideIndex_3++;
+     if(slideIndex_3 === totalSlides_3+1)
+     {
+           
+           slides_3.forEach((slide,index) => {
+            slide.classList.remove("shifting");
+            slide.style.transform= `translateX(${index*100}%)`;
+           });
+           slideIndex_3=1;
+           
+     }
+}
+
+updateSlide3Position();
+setInterval(updateSlide3Position,3000);

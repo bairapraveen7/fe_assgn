@@ -354,7 +354,6 @@ footer{
     position: relative;
     height: 40em;
     margin:0 1em 0 1em;
-    overflow: hidden;
 }
 
 
@@ -376,10 +375,11 @@ footer{
     position: relative;
     width:100%;
     height: 100%;
+    overflow: hidden;
 }
 
-.section_4_two .shifting{
-    transition: left 250ms ease-in;
+.s42_slides .shifting{
+    transition: transform 150ms ease-in-out;
 }
 
 .s42_one{
@@ -509,11 +509,25 @@ footer{
 }
 
 .section_7 .awards_7{
-    width:80%;
+    position:relative;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+    height:10em;
+}
+
+.section_7 .awards_7 .awards_7_one, .awards_7_two{
+    width:100%;
     margin-left: auto;
     margin-right: auto;
     display:flex;
+    position:absolute;
     justify-content: space-between;
+}
+
+.section_7 .awards_7 .shifting{
+    transition:transform 500ms ease-in-out;
 }
 
 .section_7 .awards_img{
@@ -608,6 +622,10 @@ footer{
 
     .s42_one{
         width:50%;
+    }
+
+    .s42_slides{
+        overflow:visible;
     }
 
     .section_4_two_alter .s42_alter_contents{
