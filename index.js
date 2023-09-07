@@ -2,13 +2,26 @@ const s4_track = document.querySelector(".s42_slides");
 
 var s4_slides = Array.from(s4_track.children);
 
-var index = 0
+var index = 0;
+
+const cloneFirst = s4_slides[0].cloneNode(true);
+const cloneLast = s4_slides[s4_slides.length-1].cloneNode(true);
+
+s4_track.appendChild(cloneFirst);
+s4_track.insertBefore(cloneLast,s4_slides[0]);
+
+s4_slides = Array.from(s4_track.children);
+
+const slidesLength = s4_slides.length;
+
 
 const s4_prevButton = document.querySelector(".section_4_two a:first-of-type");
 
 const s4_nextButton = document.querySelector(".section_4_two a:last-of-type");
 
 const slideWidth = s4_slides[0].getBoundingClientRect().width;
+
+console.log(`slideWidth : ${slideWidth}`);
 
 const updateImage = () => {
 
@@ -29,14 +42,6 @@ const updateImage = () => {
     
 }
 
-// const cloneFirst = s4_slides[0].cloneNode(true);
-// const cloneLast = s4_slides[s4_slides.length-1].cloneNode(true);
-
-// s4_track.appendChild(cloneFirst);
-// s4_track.insertBefore(cloneLast,s4_slides[0]);
-
-// s4_slides = Array.from(s4_track.children);
-
 //arrange the slides next to one another
 
 const setSlidePosition = (slide,index) => {
@@ -46,7 +51,7 @@ const setSlidePosition = (slide,index) => {
 s4_slides.forEach(setSlidePosition);
 
 const keepslides_right = () => {
-    console.log("hi");
+
     if(window.innerWidth<750)
     {
         s4_slides.forEach(setSlidePosition);
@@ -54,36 +59,58 @@ const keepslides_right = () => {
 
 }
 
-// when I click left, move sldies to the left
-s4_prevButton.addEventListener("click", e => {
-    const currentSlide = s4_track.querySelector(".current-slide");
-    const nextSlide = currentSlide.previousElementSibling;
-    const amountToMove = nextSlide.style.left;
-    // move to nextSlide
-    s4_track.style.transform = `translateX(-${amountToMove})`;
-    currentSlide.classList.remove("current-slide");
-    nextSlide.classList.add("current-slide");
+const moveSlideLeft = () => {
+   
+    var positionSelf = s4_track.offsetLeft;
+    
+    //move to previousSlide
+    s4_track.style.left = positionSelf+slideWidth + 'px';
+    
+}
 
-});
+const moveSlideRight = () => {
+
+    console.log("hi ");
+    var positionSelf = s4_track.offsetLeft;
+     console.log(positionSelf-slideWidth);
+     //move to nextSlide
+    s4_track.style.left = positionSelf-slideWidth + 'px';
+     
+}
+
+const checkIndex = () => {
+    // s4_track.classList.remove("shifting");
+    if(index === -1)
+    {
+        s4_track.style.left = -(slidesLength * slideWidth) + "px";
+        index = slidesLength - 1;
+    }
+
+    if(index === slidesLength)
+    {
+        s4_track.style.left = -(1 * slideWidth) + "px";
+        index = 0;
+    }
+}
+
+// when I click left, move sldies to the left
+s4_prevButton.addEventListener('click',moveSlideLeft);
 
 
 // when I click right , move slides to the right
 
-s4_nextButton.addEventListener("click", e => {
-    const currentSlide = s4_track.querySelector(".current-slide");
-    const nextSlide = currentSlide.nextElementSibling;
-    const amountToMove = nextSlide.style.left;
-    // move to nextSlide
-    s4_track.style.transform = `translateX(-${amountToMove})`;
-    currentSlide.classList.remove("current-slide");
-    nextSlide.classList.add("current-slide");
+s4_nextButton.addEventListener('click', moveSlideRight);
 
-});
-
-// window resize event listener
 
 
 updateImage();
+
+// window resize event listener
+
 window.addEventListener('resize',updateImage);
 window.addEventListener('resize',keepslides_right);
+
+// when the transition ends, the event listener
+
+window.addEventListener('transitionend',checkIndex);
 

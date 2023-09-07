@@ -58,7 +58,7 @@
         <section class="section section_2">
 
             <div class="carousel">
-                <div class="item one">
+                <div class="item one shifting">
                     <h2>"Communicating and managing OKRs on culture.easy is helping
                         slay align on high priority goals"</h2>
                     <div class="author">
@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <div class="item two">
+                <div class="item two shifting">
                     <h2>"culture.easy's simple-designed OKR feature was key to
                         the mind-shift towards high performance execution"
                     </h2>
@@ -83,7 +83,7 @@
                     </div>
                 </div>
 
-                <div class="item three">
+                <div class="item three shifting">
                     <h2>"My first 5 minutes every day goes into understanding 
                         how my team is executing to the planned goals. I am happy 
                         that I'm looking at culture.easy and not a google sheet "</h2>
@@ -135,7 +135,7 @@
                 </div>
                 <div class="section_4_two">
                     <a><i class="fa-solid fa-chevron-left"></i></a>
-                    <div class="s42_slides">
+                    <div class="s42_slides shifting">
                         <div class="s42_one current-slide">
                             <button class="s42_one_surveys">Surveys</button>
                             <p>Listen to the frontline voices that are executing your business strategy</p>
@@ -320,10 +320,19 @@
 
     <script>
 
-        let slideIndex = -1,flag = 0;
-        const slides = document.querySelectorAll(".item")
+        let slideIndex = 0,flag = 0,first = 0;
+        const top_track = document.querySelector(".section_2 .carousel");
+        let slides = document.querySelectorAll(".item");
         const nav_circles = document.querySelectorAll(".nav_circle_item");
-        const totalSlides = slides.length;
+        let totalSlides = slides.length;
+        const cloneFirsta = slides[0].cloneNode(true);
+    
+        top_track.appendChild(cloneFirsta);
+
+        slides = Array.from(top_track.children);
+        
+        totalSlides = slides.length;
+        console.log(totalSlides);
         
         function showNextSlide(){
 
@@ -334,27 +343,42 @@
                 });
                 flag = 1;
             }
-            slideIndex++;
-            if(slideIndex == totalSlides){
-                slideIndex = 0;
-            }
+            
             updateSlidePosition();
         }
         
         function updateSlidePosition(){ 
             const offsetX = -slideIndex * 100;
             slides.forEach((slide,index) => {
-                slide.style.transform = `translateX(${offsetX + index * 100}%)`;
-                if(index === slideIndex)
+                slide.classList.add("shifting");
+                slide.style.transform = `translateX(${offsetX + index*100}%)`;
+                if(slideIndex<totalSlides)
                 {
-                    nav_circles[index].style.backgroundColor = 'blue';
+                    if((index%(totalSlides-1)) == (slideIndex%(totalSlides-1)))
+                    nav_circles[slideIndex%3].style.backgroundColor = 'blue';
+                    else
+                    nav_circles[index%3].style.backgroundColor =  '#d2d2d2'
                 }
-                else{
-                    nav_circles[index].style.backgroundColor = '#cccccc';
-                }
+             
             });
+            slideIndex++;
+            console.log(slideIndex);
+            if(slideIndex === totalSlides+1)
+            {
+                   slides.forEach((slide,index) => {
+                    slide.classList.remove("shifting");
+                    slide.style.transform = `translateX(${index*100}%)`;
+                    
+                   });
+                   nav_circles[0].style.backgroundColor = 'blue';
+                   slideIndex = 0;
+
+            }
+            
         }
         
+          
+        showNextSlide();
         setInterval(showNextSlide,3000);
         
         </script>

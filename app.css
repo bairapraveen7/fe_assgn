@@ -241,8 +241,13 @@ footer{
     flex-direction: column;
     align-items:center;
     position: absolute;
+}
+
+.section_2 .shifting{
     transition: transform 0.5s ease-in-out;
 }
+
+
 
 .section_2 .two{
     display:none;
@@ -353,7 +358,9 @@ footer{
 }
 
 
-
+.section_4_two a:first-of-type{
+    z-index: 1;
+}
 
 
 .section_4_two a{
@@ -366,9 +373,13 @@ footer{
 }
 
 .s42_slides{
+    position: relative;
     width:100%;
     height: 100%;
-    transition: transform 250ms ease-in;
+}
+
+.section_4_two .shifting{
+    transition: left 250ms ease-in;
 }
 
 .s42_one{
@@ -424,9 +435,9 @@ footer{
 
 .section_4_two_alter .s42_slides .current-slide-alter img{
     width:80%;
+    left:10%;
     object-fit: contain;
     position: relative;
-    left:10%;
     object-position: top;
     height:100%;
 }
@@ -615,7 +626,7 @@ footer{
 
     .section_4_two_alter .s42_slides .current-slide-alter{
         display:block;
-        width: 40%;
+        width: 80%;
         margin-left:3em;
         overflow: hidden;
         height: 300px;
