@@ -155,3 +155,19 @@ function updateSlide3Position(){
 
 updateSlide3Position();
 setInterval(updateSlide3Position,3000);
+
+// text animation
+
+const anime_element = document.querySelector(".section_3 .second_text");
+
+const setText = () => {
+    setTimeout(() => anime_element.textContent="Alignment",0);
+    setTimeout(() => anime_element.textContent="Betterment",4000);
+    setTimeout(() => anime_element.textContent="Recognition",8000);
+    setTimeout(() => anime_element.textContent="Empowerment",12000);
+}
+
+console.log(anime_element);
+
+setText();
+setInterval(setText,16000);
